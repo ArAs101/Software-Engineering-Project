@@ -1,4 +1,4 @@
-export default function LoginForm() {
+export default function RegisterForm() {
     return (
         <div class="container mt-5 pt-5" >
             <div class="row">
@@ -13,7 +13,8 @@ export default function LoginForm() {
             <input type="text" name="" class="form-control my-4 py-2" placeholder="Username"></input>
             <input type="text" name="" class="form-control my-4 py-2" placeholder="Password"></input>
             <div class="text-center mt-3">
-                <button class="btn btn-primary">Login</button>
+                <button class="btn btn-primary">Register</button>
+                <a href="login" class="nav-link text-primary">Already have an account ?</a>
             </div>
         </form>
     </div>
