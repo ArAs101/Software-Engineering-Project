@@ -2,9 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState} from "react";
 import Test from "./components/test";
-import ReactDOM from "react-dom/client";
 import Register from "./components/Register";
-import {Routes, Route, useNavigate} from "react-router-dom";
+
 
 function App() {
 
@@ -23,20 +22,23 @@ function App() {
 
     fetchData();
   }, []);*/
-const navigate = useNavigate()
+
+
 
     const navigateToRegisterPage = () => {
-      navigate(Register)
+        //navigate("/register")
     }
 
   return (
     <div className="App">
       <Test/>
         <h2>................................................</h2>
-        <button onClick={navigateToRegisterPage}>Register here</button>
-        <Routes>
-            <Route path={Register}/>
-        </Routes>
+        <a href="/register">
+            <button>Register here</button>
+            {/*will replace click event with ReactJS navigation...*/}
+        </a>
+
+
         {/*<Register/>*/}
 
 

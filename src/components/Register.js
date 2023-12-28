@@ -18,9 +18,9 @@ function Register() {
     const [data, setData] = useState("");
     return (
         <div className="App">
-
-            <h2>{data ? <p>{data.message}</p> : <p>Loading...</p>}</h2>
-            {/*<header className="App-header">
+            <h2>Register page...</h2>
+            {/*<h2>{data ? <p>{data.message}</p> : <p>Loading...</p>}</h2>
+            <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
                 <p>
                     Edit <code>src/App.js</code> and save to reload.</p>
