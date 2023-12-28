@@ -1,25 +1,73 @@
-export default function RegisterForm() {
-    return (
-        <div class="container mt-5 pt-5" >
-            <div class="row">
-                <div class="col-12 col-sm-8 col-md-6 m-auto">
-<div class="card border-0 shadow">
-    <div class="card-body text-center">
-    <svg class="mx-auto my-3 bi bi-person-circle" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"  viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg>
-        <form action="">
-            <input type="text" name="" class="form-control my-4 py-2" placeholder="Username"></input>
-            <input type="text" name="" class="form-control my-4 py-2" placeholder="Password"></input>
-            <div class="text-center mt-3">
-                <button class="btn btn-primary">Register</button>
-                <a href="login" class="nav-link text-primary">Already have an account ?</a>
-            </div>
-        </form>
-    </div>
-</div>
+import React, { useState } from 'react';
+import axios from 'axios';
 
+export default function RegisterForm() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+
+    const handleRegister = async (event) => {
+        event.preventDefault();
+        try {
+            // Replace with your backend's register endpoint
+            await axios.post('http://localhost:3000/register', {
+                username,
+                password,
+                mail: email, // Make sure the field names match your model
+                phone
+            });
+            // Handle registration success (e.g., redirect to login page or display success message)
+        } catch (error) {
+            // Handle registration error
+            console.error('Registration error:', error.response?.data || error.message);
+        }
+    };
+
+    return (
+        <div className="container mt-5 pt-5">
+            <div className="row">
+                <div className="col-12 col-sm-8 col-md-6 m-auto">
+                    <div className="card border-0 shadow">
+                        <div className="card-body text-center">
+                            {/* SVG and other static content */}
+                            <form onSubmit={handleRegister}>
+                                <input
+                                    type="text"
+                                    className="form-control my-4 py-2"
+                                    placeholder="Username"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                                <input
+                                    type="password"
+                                    className="form-control my-4 py-2"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <input
+                                    type="email"
+                                    className="form-control my-4 py-2"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <input
+                                    type="tel"
+                                    className="form-control my-4 py-2"
+                                    placeholder="Phone"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                />
+                                <div className="text-center mt-3">
+                                    <button type="submit" className="btn btn-primary">Register</button>
+                                    {/* Link to login */}
+                                </div>
+                                <div>Already have an account? <a href="/login">Login</a></div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
