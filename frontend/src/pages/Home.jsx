@@ -6,17 +6,19 @@ import Navbar from '../components/Navbar';
 import GiftAwayEntry from '../components/GiftAwayCard';
 
 export default function Home() {
+    // Assuming you have an array of entries that you want to map over
+    const entries = [/* ... your entries ... */];
+
     return (
         <>
             <Navbar />
-            <Container style={{ paddingTop: '56px' }}> 
-                <Row>
-                    <Col lg={8}>
-                        <GiftAwayEntry />
-                    </Col>
-                    <Col lg={4}>
-                        <GiftAwayEntry />
-                    </Col>
+            <Container style={{ marginTop: '100px' }}>
+                <Row className="mt-3">
+                    {entries.map((entry, index) => (
+                        <Col md={3} key={index} className="mb-3">
+                            <GiftAwayEntry {...entry} />
+                        </Col>
+                    ))}
                 </Row>
             </Container>
         </>

@@ -1,21 +1,30 @@
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function GiftAwayEntry() {
+function GiftAwayEntry(props) {
+  // State to manage whether the description is visible
+  const [showDescription, setShowDescription] = useState(false);
+
+  // Function to toggle the description visibility
+  const toggleDescription = () => {
+    setShowDescription(!showDescription);
+  };
+
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card>
+      <Card.Img variant="top" src={props.image || "holder.js/100px180"} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Claim</Button>
+        <Card.Title>{props.title}</Card.Title>
+        {/* Conditionally render the description based on the state */}
+        {showDescription && <Card.Text>{props.description}</Card.Text>}
+        <Button variant="primary" onClick={toggleDescription}>
+          {showDescription ? 'Hide Details' : 'View Details'}
+        </Button>
+        <Button variant="primary" className="ms-2">Claim</Button>
       </Card.Body>
     </Card>
   );
 }
 
 export default GiftAwayEntry;
-
