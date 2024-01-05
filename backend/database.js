@@ -9,10 +9,8 @@ const connectToDb = () => {
 };
 
 
-// Databse Functions:
-
-// 2a. Instantiate Object (create new user object)
-// const user = await User.create({
+////User - create new
+// const createUser = await User.create({
 //   username: "Emi",
 //   password: "Emii123",
 //   firstname: "Emma",
@@ -29,55 +27,80 @@ const connectToDb = () => {
 //     phone: 66447434559
 //   }
 // });
+// console.log(createUser)
 
-// 2. Create new Entry
-// const entry = await Entry.create({
+//User - delete by Id
+async function deleteUser(userID) {
+    try {
+        const deleteUser = await User.findByIdAndDelete(userID);
+        console.log("Deleted User: ", deleteUser)
+    } catch (error) {
+        console.log("Database Error for deleting user:", error.message)
+    }
+}
+
+// //Entry - create new
+// const createEntry = await Entry.create({
 //   creator: "6595ca6fc018c168a53a4cbb",
 //   title: "Kinderfahrrad",
 //   description: "Genesis, blau, 16 zoll, Untere Zollamtstr. 1030 Wien Mail: maxi1995@gmx.at"
 // })
+// console.log(createEntry)
 
-// 3. change user field
-// newuser.firstname = "Hilde";
-// await newuser.save();
+//Entry - delete by Id
+async function deleteEntry(entryId) {
+    try {
+        const deleteEntry = await Entry.findByIdAndDelete(entryId);
+        console.log("Deleted Entry: ", deleteEntry);
+    } catch (error) {
+        console.log("Database Error for deleting entry:", error.message);
+    }
+}
 
-// 4a. Find user, disply chosen fields
-// const user = await User.findById("65981ddd79008e69221cdc0a", "username firstname lastname").exec();
-// console.log(user)
+//Search - entry by title
+async function searchEntriesByTitle(entryTitle) {
+    try {
+        const regex = new RegExp(title, "i");
+        const searchedEntries = await Entry.find({ title: regex });
+        console.log("Searched Entry: ", searchedEntries)
+    } catch (error) {
+        console.log("Database Error for searched entry:", error.message)
+    }
+}
 
-// 4b. Find Entry & show creator
-// const entry = await Entry.findOne({ title: "Blumenvase" }).populate("creator");
-// console.log(entry)
+// Progress
+//Search - entry by category
+async function searchEntriesByCategory(entryCategory) {
+    try {
+        const regex = new RegExp(title, "i");
+        const searchedEntries = await Entry.find({ title: regex });
+        console.log("Searched Entry: ", searchedEntries)
+    } catch (error) {
+        console.log("Database Error for searched entry:", error.message)
+    }
+}
 
-// 5. Delete user
-// const user = await User.deleteOne( {username: "Sabsi" });
-// console.log(user)
+// partial matching an case insensitivity
 
+// User:KCKC
+// POST: Add new user
+// DELETE: User
+// PUT: Edit user data
 
-//Database Kevin
-// const jwtSecret = "notAGoodSecret"
+// Entry:
+// POST: Add new entry
+// DELETE: Delete Entry
+// PUT: Edit user data
 
-// app.post('/register', async (req, res) => {
-//     try {
-//       let user = new User(req.body);
-//       await user.save();
-//       res.status(201).send('User created successfully');
-//     } catch (error) {
-//       res.status(400).send(error.message);
-//     }
-//   });
+// Search Entry:
+// GET: search by title
+// Get: seatch by category
+// Get: seatch by category & title
 
-//   app.post('/login', async (req, res) => {
-//     try {
-//       const user = await User.findOne({ username: req.body.username });
-//       if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
-//         return res.status(401).send('Invalid username or password');
-//       }
-//       const token = jwt.sign({ _id: user._id }, `${jwtSecret}`, { expiresIn: '1h' });
-//       res.send({ token });
-//     } catch (error) {
-//       res.status(500).send(error.message);
-//     }
-//   });
-
+export const dbFunctions = {
+    deleteEntry,
+    deleteUser,
+    searchEntriesByTitle,
+    searchEntriesByCategory,
+}
 export default connectToDb;
