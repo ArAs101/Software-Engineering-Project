@@ -8,7 +8,7 @@ import Entry from "./model/Entry.js"
 const app = express();
 app.use(express.json());
 
-const port = 3000;
+const port = 4000;
 
 // Database: connect to database
 connectToDb((err) => {

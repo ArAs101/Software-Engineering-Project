@@ -3,17 +3,17 @@ import { AuthContext } from './AuthContext'; // Adjust the path as needed
 import axios from 'axios';
 
 export default function LoginForm() {
-    const [username, setUsername] = useState('');
+    const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { login } = useContext(AuthContext);
 
-    const handleLogin = async (event) => {
-        event.preventDefault();
+    const handleLogin = async (e) => {
+        e.preventDefault();
         try {
             // Replace with your backend's login endpoint
-            const response = await axios.post('http://localhost:3000/login', {
-                username,
-                password
+            const response = await axios.post('http://localhost:4000/login', {
+                username: userName,
+                password: password
             });
             login(response.data.token); // Use the login function from AuthContext
             // Redirect to home or another page as needed
@@ -38,7 +38,7 @@ export default function LoginForm() {
                                     type="text"
                                     className="form-control my-4 py-2"
                                     placeholder="Username"
-                                    value={username}
+                                    value={userName}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
                                 <input
