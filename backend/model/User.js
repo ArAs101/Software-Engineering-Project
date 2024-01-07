@@ -52,6 +52,7 @@ const userSchema = new Schema({
   }, //[id]; // New Collection: List.js?
   claimed:{
     type: [mongoose.SchemaTypes.ObjectId],
+    ref: "Entry",
 })
 
 // Kevin
