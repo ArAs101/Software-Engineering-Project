@@ -34,6 +34,7 @@ const entrySchema = new Schema({
         immutalbe: true,
         default: () => Date.now(), // every time new object created; {new Date() = only static value}
     },
+    //ToDo:
     //pictures: [],
     //contactInfo
     //pickupLocation
