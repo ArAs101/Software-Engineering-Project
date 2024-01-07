@@ -1,12 +1,14 @@
+//depracated: need to adapt to frontend
 const mongoose = require('mongoose');
 const User = require('./User.js');
 const Entry = require('./Entry.js');
 
-const connectToDb = () => {
-    mongoose.connect("mongodb+srv://aaron:GiftAway123@cluster0.hfihqtt.mongodb.net/")
-    .then(() => console.log('Connected to MongoDB database'))
-    .catch(err => console.error('Connection to database failed 2:', err));
-};
+
+// const connectToDb = () => {
+//     mongoose.connect("mongodb+srv://aaron:GiftAway123@cluster0.hfihqtt.mongodb.net/")
+//     .then(() => console.log('Connected to MongoDB database'))
+//     .catch(err => console.error('Connection to database failed 2:', err));
+// };
 
 //// USER
 ////User - create new
@@ -82,15 +84,13 @@ async function searchEntriesByTitle(entryTitle) {
 // Get: seatch by category & title
 
 // List functions:
-
-
-export const dbFunctions = {
+module.exports = {
+    connectToDb,
     deleteEntry,
     deleteUser,
     searchEntriesByTitle,
-    //searchEntriesByCategory,
-}
-export default connectToDb;
+};
+
 
 //Tryout:
 ////User - create new

@@ -21,7 +21,7 @@ const entrySchema = new Schema({
         required: true,
     },
     pictures: [{
-        type: String,  // URL path to picture
+        type: String,  // URL path to cloudinary
         required: false,
     }],
     categories: [{

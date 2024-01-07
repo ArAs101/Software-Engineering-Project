@@ -1,7 +1,7 @@
 const cloudinary = require('cloudinary').v2
 const uploadOnCloudinary = require("../utils/cloudinary")
-const Giftaway = require('../db/giftAway.models')
-const Category = require('../db/category.model')
+const Giftaway = require('../db/Entry')
+const Category = require('../db/Category')
 
 
 const createGiftaway = async (req, res) => {

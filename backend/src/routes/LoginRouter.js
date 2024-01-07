@@ -1,5 +1,5 @@
 const express = require('express')
-const User = require('../db/register.models')
+const User = require('../db/User')
 const bcrypt = require('bcrypt')
 
 

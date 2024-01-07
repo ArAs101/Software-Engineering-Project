@@ -1,15 +1,15 @@
 const express = require('express')
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import connectToDb, { dbFunctions } from "./db/database.js"
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-// const databaseRouter = require('./db/database')
+
 const loginRouter = require('./routes/LoginRouter')
 const registerRouter = require('./routes/RegisterRouter')
 const giftAwayRouter = require('./routes/GiftAwayRouter')
 const dashboardRouter = require('./routes/DashboardRouter')
 const categoryRouter = require('./routes/CategoryRouter')
+const connectToMongoDB = require('./db/databaseconnection')
 
 
 const app = express();
@@ -32,15 +32,22 @@ app.use("/category", categoryRouter)
 app.use("/dashboard", dashboardRouter)
 
 
-// DEPRECATED:
 // Database: connect to database
-connectToDb((err) => {
-  if (err) {
-    console.err("Connection to database failed 1:", err);
-    return;
+async function connectMongoDB(){
+  try {
+    await connectToMongoDB();
+    console.log('Database connection established')
+  } catch (error) {
+    console.error('Server cannot reach database:', err);
   }
-});
+};
+connectMongoDB();
 
+
+
+
+
+// DEPRECATED:
 /* // Routes
 app.get("/users", async (req, res) => {
   try {

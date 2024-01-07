@@ -1,6 +1,6 @@
 const { accessSync } = require('fs')
-const Giftaway = require('../db/giftAway.models')
-const User = require('../db/register.models')
+const Giftaway = require('../db/Entry')
+const User = require('../db/User')
 
 //all gifts list
 const fetchUnclaimedGiftaways = async (req, res) => {

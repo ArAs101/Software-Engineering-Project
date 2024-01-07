@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('../db/register.models'); // Assuming this exports a Mongoose model named "User"
+const User = require('../db/User'); // Assuming this exports a Mongoose model named "User"
 const bcrypt = require('bcrypt'); // You will need to install bcrypt if not already done
 
 const jwt = require('jsonwebtoken')
