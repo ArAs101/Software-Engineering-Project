@@ -1,14 +1,35 @@
 import express from "express"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import connectToDb, { dbFunctions } from "./database.js"
-import User from "./model/User.js"
-import Entry from "./model/Entry.js"
+import connectToDb, { dbFunctions } from "./db/database.js"
+import cookieParser from "cookie-parser"
+import cors from 'cors'
+import loginRouter from './routes/LoginRouter.js'
+import registerRouter from './routes/RegisterRouter.js'
+import giftAwayRouter from './routes/GiftAwayRouter.js'
+import dashboardRouter from './routes/DashboardRouter.js'
+import categoryRouter from './routes/CategoryRouter.js'
+
 
 const app = express();
+const port = 4000;
+
+app.use(cookieParser())
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}))
+
 app.use(express.json());
 
-const port = 4000;
+
+app.use("/login", loginRouter)
+app.use("/register", registerRouter)
+app.use("/giftaway", giftAwayRouter)
+app.use("/category", categoryRouter)
+app.use("/dashboard", dashboardRouter)
+
 
 // Database: connect to database
 connectToDb((err) => {
@@ -18,7 +39,7 @@ connectToDb((err) => {
   }
 });
 
-// Routes
+/* // Routes
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find();
@@ -35,11 +56,11 @@ app.get("/entries", async (req, res) => {
   } catch(err) {
     res.status(500).json({message: err.message});
   }
-});
+}); */
 
 // Noch Ausprobieren!
 //DELETE - User by Id
-app.delete("/users/:id", async (req, res) => {
+/* app.delete("/users/:id", async (req, res) => {
   try {
     const userId = req.params.id;
     const deletedUser =  await deleteUser(userId);
@@ -50,10 +71,10 @@ app.delete("/users/:id", async (req, res) => {
   } catch (error) {
     res.status(500).send("Server Error - Error deleting User: " + error.message);
   }
-});
+}); */
 
 //DELETE - Entry by Id
-app.delete("/entries/:id", async (req, res) => {
+/* app.delete("/entries/:id", async (req, res) => {
   try {
     const entryId = req.params.id;
     const deletedEntry =  await deleteEntry(entryId);
@@ -64,10 +85,10 @@ app.delete("/entries/:id", async (req, res) => {
   } catch (error) {
     res.status(500).send("Server Error - Error deleting Entry: " + error.message);
   }
-});
+}); */
 
 // Search Entry by title
-app.get("entries/", async (res, req) => {
+/* app.get("entries/", async (res, req) => {
   try {
     const entryTitle = req.query.title;
     const searchedEntries = await searchEntryByTitle(entryTitle);
@@ -78,7 +99,7 @@ app.get("entries/", async (res, req) => {
   } catch (error) {
     res.status(500).send("Server Error - Error searching Entry: " + error.message);
   }
-})
+}) */
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`);

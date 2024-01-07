@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
-import User from "./model/User.js"
-import Entry from "./model/Entry.js"
+import User from "./User.js"
+import Entry from "./Entry.js"
 
 const connectToDb = () => {
     mongoose.connect("mongodb+srv://aaron:GiftAway123@cluster0.hfihqtt.mongodb.net/")
