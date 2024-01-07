@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 // pages
-import Home from './pages/Home'
+import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import axios from "axios"
+import GiftAway from './pages/Giftaway'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
@@ -20,9 +20,10 @@ axios.get('http://localhost:3000/getUsers')
     <BrowserRouter>
       <main>
         <Routes>
-          <Route path="/" element={<Home />}/>
+          <Route path="/" element={<Dashboard />}/>
           <Route path="login" element={<Login />}/>
           <Route path="register" element={<Register />}/>
+          <Route path="giftaway" element={<GiftAway />}/>
         </Routes>
       </main>
     </BrowserRouter>
