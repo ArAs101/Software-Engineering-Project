@@ -4,18 +4,18 @@ import axios from 'axios';
 export default function RegisterForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const [mail, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
-    const handleRegister = async (event) => {
-        event.preventDefault();
+    const handleRegister = async (e) => {
+        e.preventDefault();
         try {
             // Replace with your backend's register endpoint
-            await axios.post('http://localhost:3000/register', {
-                username,
-                password,
-                mail: email, // Make sure the field names match your model
-                phone
+            await axios.post('http://localhost:4000/register', {
+                username: username,
+                mail: mail,
+                phone: phone,
+                password: password
             });
             // Handle registration success (e.g., redirect to login page or display success message)
         } catch (error) {
@@ -39,18 +39,12 @@ export default function RegisterForm() {
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
-                                <input
-                                    type="password"
-                                    className="form-control my-4 py-2"
-                                    placeholder="Password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
+                        
                                 <input
                                     type="email"
                                     className="form-control my-4 py-2"
                                     placeholder="Email"
-                                    value={email}
+                                    value={mail}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <input
@@ -59,6 +53,13 @@ export default function RegisterForm() {
                                     placeholder="Phone"
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
+                                />
+                                 <input
+                                    type="password"
+                                    className="form-control my-4 py-2"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <div className="text-center mt-3">
                                     <button type="submit" className="btn btn-primary">Register</button>

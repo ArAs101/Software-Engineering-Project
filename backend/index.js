@@ -7,7 +7,7 @@ import User from "./models/Users.js"
 const app = express()
 app.use(express.json())
 
-const port = 3000;
+const port = 4000;
 
 mongoose.connect("mongodb://127.0.0.1:27017/giftaway")
 .then(() => console.log('Connected to MongoDB'))

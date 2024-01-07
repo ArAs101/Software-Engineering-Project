@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: {
+   /*  proxy: {
       // Use the '/api' prefix for all backend requests
       '/api': {
         target: 'http://localhost:3000', // Backend server URL
@@ -14,7 +14,7 @@ export default defineConfig({
         // Optionally, rewrite the '/api' prefix in the request path
         // to the root '/' if your backend routes don't have the '/api' prefix
         rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
+      } 
+    }*/
   }
 });
