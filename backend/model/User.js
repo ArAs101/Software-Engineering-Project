@@ -47,6 +47,7 @@ const userSchema = new Schema({
   contactInfo: contactInfoSchema,
   //pickupLocation: pickupLocationSchema,
   giftaways:{
+  claimed:{
 })
 
 // Kevin
