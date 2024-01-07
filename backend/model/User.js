@@ -21,7 +21,7 @@ const contactInfoSchema = new Schema({
   phone: Number
 })
 
-//  ? structure
+//  ? structure/redundant with address
 // const pickupLocationSchema = new Schema({
 //     city: String,
 //     postcode: Number,
