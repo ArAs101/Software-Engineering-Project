@@ -8,7 +8,7 @@ const connectToDb = () => {
     .catch(err => console.error('Connection to database failed 2:', err));
 };
 
-
+//// USER
 ////User - create new
 // const createUser = await User.create({
 //   username: "Emi",
@@ -39,6 +39,7 @@ async function deleteUser(userID) {
     }
 }
 
+//// ENTRY
 // //Entry - create new
 // const createEntry = await Entry.create({
 //   creator: "6595ca6fc018c168a53a4cbb",
@@ -57,32 +58,33 @@ async function deleteEntry(entryId) {
     }
 }
 
+// SEARCH
 //Search - entry by title
 async function searchEntriesByTitle(entryTitle) {
     try {
-        const regex = new RegExp(title, "i");
+        // Regular Expression: partial string match & case-insensitivity (i)
+        const regex = new RegExp(entryTitle, "i"); // constructor: ('pattern', 'flags')
         const searchedEntries = await Entry.find({ title: regex });
+        return searchEntriesByTitle;
         console.log("Searched Entry: ", searchedEntries)
     } catch (error) {
         console.log("Database Error for searched entry:", error.message)
     }
 }
 
-// Progress
+// In Progress
 //Search - entry by category
-async function searchEntriesByCategory(entryCategory) {
-    try {
-        const regex = new RegExp(title, "i");
-        const searchedEntries = await Entry.find({ title: regex });
-        console.log("Searched Entry: ", searchedEntries)
-    } catch (error) {
-        console.log("Database Error for searched entry:", error.message)
-    }
-}
+// async function searchEntriesByCategory(entryCategory) {
+//     try {
+//         console.log("Searched Entry: ", searchedEntries)
+//     } catch (error) {
+//         console.log("Database Error for searched entry:", error.message)
+//     }
+// }
 
 // partial matching an case insensitivity
 
-// User:KCKC
+// User:
 // POST: Add new user
 // DELETE: User
 // PUT: Edit user data
@@ -101,6 +103,6 @@ export const dbFunctions = {
     deleteEntry,
     deleteUser,
     searchEntriesByTitle,
-    searchEntriesByCategory,
+    //searchEntriesByCategory,
 }
 export default connectToDb;

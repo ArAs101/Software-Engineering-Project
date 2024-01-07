@@ -38,6 +38,7 @@ app.get("/entries", async (req, res) => {
 });
 
 // Noch Ausprobieren!
+// USER
 //DELETE - User by Id
 app.delete("/users/:id", async (req, res) => {
   try {
@@ -52,6 +53,7 @@ app.delete("/users/:id", async (req, res) => {
   }
 });
 
+// ENTRY
 //DELETE - Entry by Id
 app.delete("/entries/:id", async (req, res) => {
   try {
@@ -66,17 +68,21 @@ app.delete("/entries/:id", async (req, res) => {
   }
 });
 
+// SEARCH
 // Search Entry by title
 app.get("entries/", async (res, req) => {
   try {
     const entryTitle = req.query.title;
-    const searchedEntries = await searchEntryByTitle(entryTitle);
     if (!title) {
-      return res.status(400).send("Client Request Error - No such entry title");
+      return res.status(400).send("Client Request Error - no entry title entered");
+    }
+    const searchedEntries = await searchEntryByTitle(entryTitle);
+    if (searchedEntries.length === 0) {
+      return res.status(404).send("No Entries matching your Search");
     }
     res.json(searchedEntries);
   } catch (error) {
-    res.status(500).send("Server Error - Error searching Entry: " + error.message);
+    res.status(500).send("Server Error - Error searching Entries by title: " + error.message);
   }
 })
 
