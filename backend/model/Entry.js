@@ -26,7 +26,7 @@ const entrySchema = new Schema({
         required: true,
     },
     category: [],
-    claimed: Boolean,
+    state: String, // ToDo: only one state: created, claimed, deactivated
     //claimed: claimedSchema,
     createdAT: {
         type: Date,
