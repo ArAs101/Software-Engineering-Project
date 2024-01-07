@@ -37,13 +37,59 @@ function NavBar() {
                             aria-label="Search"
                         />
                         <NavDropdown title="Categories" id="navbarScrollingDropdown" className="me-2">
-                            <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                            <NavDropdown.Item href="#action3">All</NavDropdown.Item>
                             <NavDropdown.Item href="#action4">
-                                Another action
+                                Antiques / Art
                             </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Books / Music
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Camera
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Child
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Computer
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Fashion / Accessories
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Gaming
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Garden / Workshop
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Household
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Jewelry
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Leisure / Instruments
+                            </NavDropdown.Item>
+                            
+                            <NavDropdown.Item href="#action4">
+                                Pet Supplies
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                (Smart)Phone
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Sport
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Toys
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action4">
+                                Wellbeing
+                            </NavDropdown.Item>                           
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action5">
-                                Something else here
+                            <NavDropdown.Item href="#action4">
+                                Other
                             </NavDropdown.Item>
                         </NavDropdown>
                         <Button variant="outline-success">Search</Button>
