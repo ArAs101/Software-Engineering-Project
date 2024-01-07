@@ -47,6 +47,7 @@ const userSchema = new Schema({
   contactInfo: contactInfoSchema,
   //pickupLocation: pickupLocationSchema,
   giftaways:{
+    type: [mongoose.SchemaTypes.ObjectId],
   claimed:{
 })
 
