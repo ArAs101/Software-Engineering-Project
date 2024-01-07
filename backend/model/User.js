@@ -49,6 +49,7 @@ const userSchema = new Schema({
   giftaways:{
     type: [mongoose.SchemaTypes.ObjectId],
     ref: "Entry",
+  }, //[id]; // New Collection: List.js?
   claimed:{
 })
 
