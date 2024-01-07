@@ -48,6 +48,7 @@ const userSchema = new Schema({
   //pickupLocation: pickupLocationSchema,
   giftaways:{
     type: [mongoose.SchemaTypes.ObjectId],
+    ref: "Entry",
   claimed:{
 })
 
