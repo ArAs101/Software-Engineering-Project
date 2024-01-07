@@ -5,12 +5,18 @@ import mongoose from "mongoose"
 const {Schema, model} = mongoose;
 
 //1. Define Schema Object
+// Level 3 {{{}}
+const pickupLocationSchema = new Schema({
+  city: String,
+  postcode: Number,
+});
+
+// Level 2 {{}}
 const addressSchema = new Schema(  {
   street: String,
   doornumber: Number,
-  city: String,
-  postcode: Number,
-})
+  pickupLocation: pickupLocationSchema,
+});
 
 const contactInfoSchema = new Schema({
   mail: {
@@ -19,14 +25,9 @@ const contactInfoSchema = new Schema({
     required: true,
   },
   phone: Number
-})
+});
 
-//  ? structure
-// const pickupLocationSchema = new Schema({
-//     city: String,
-//     postcode: Number,
-// })
-
+// Level 1 {}
 const userSchema = new Schema({
   username: {
     type: String,
@@ -35,36 +36,29 @@ const userSchema = new Schema({
   password: {
       type: String,
       required: true,
-      // minLength: 8, // security
+      // minLength: 8, // security length
   },
   firstname: String,
   lastname: String,
   birthday: {
       type: Date,
-      //max: "2008-01-01", // at least 16 for savety
+      //max: "2008-01-01", // at least 16 for savety reasons
   },
   address: addressSchema,
   contactInfo: contactInfoSchema,
-  //pickupLocation: pickupLocationSchema,
-  // giftaways:[String], //[id]; // New Collection: List.js?
-  // claimed:[String],
-  // received:[String],
-})
-
-// Kevin
-// const userSchema = new mongoose.Schema({
-//   username: { type: String, required: true, unique: true },
-//   password: { type: String, required: true },
-//   mail: { type: String, required: true },
-//   phone: { type: String, required: true }
-// });
-
-// // Pre-save hook to hash passwords before saving user document
-// userSchema.pre('save', async function (next) {
-//   if (!this.isModified('password')) return next();
-//   this.password = await bcrypt.hash(this.password, 10);
-//   next();
-// });
+  giftawayslist:{
+    type: [mongoose.SchemaTypes.ObjectId],
+    ref: "Entry",
+  },
+  claimedlist:{
+    type: [mongoose.SchemaTypes.ObjectId],
+    ref: "Entry",
+  },
+  receivedlist:{
+    type: [mongoose.SchemaTypes.ObjectId],
+    ref: "Entry",
+  },
+});
 
 const User = mongoose.model('User', userSchema);
 export default User;

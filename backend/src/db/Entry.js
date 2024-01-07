@@ -2,20 +2,15 @@ import mongoose from "mongoose";
 
 const {Schema, SchemaTypes, model } = mongoose;
 
-// const claimedSchema = new Schema({
-//     type: Boolean,
-//     default: false,
-//     claimer: {
-//         type: mongoose.SchemaTypes.ObjectId,
-//         ref: "User",
-//     },
-// })
-
 const entrySchema = new Schema({
     creator: {
-        type: mongoose.SchemaTypes.ObjectId, //tell mongoose what model we reference
-        ref: "User",
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "User", //tell mongoose what model we reference
         required: true,
+    },
+    consumer: {
+        type: Schema.SchemaTypes.ObjectId,
+        ref: "User"
     },
     title: {
         type: String,
@@ -25,18 +20,26 @@ const entrySchema = new Schema({
         type: String,
         required: true,
     },
-    category: [],
-    claimed: Boolean,
-    //claimed: claimedSchema,
+    pictures: [{
+        type: String,  // URL path to picture
+        required: false,
+    }],
+    category: {
+        type: [String],
+        enum: [ "Garden", "Furniture", "Household", "Sport", "Antiques/Art", "Books", "Music", "Electronics", "(Smart)Phone", "Gaming", "Clothes", "Jewelry" , "Accessories", "Childstuff", "Toys", "Craft Materials", "Pet Supplies", "Other"]
+    },
+    state: {
+        type: String,
+        enum: ["created", "claimed", "deactivated"],
+        default: "created",
+        required: true,
+    },
     createdAT: {
         type: Date,
         immutalbe: true,
-        default: () => Date.now(), // every time new object created; {new Date() = only static value}
+        default: () => Date.now(),
     },
-    //pictures: [],
-    //contactInfo
-    //pickupLocation
-})
+});
 
 const Entry = model("Entry", entrySchema);
 export default Entry;
