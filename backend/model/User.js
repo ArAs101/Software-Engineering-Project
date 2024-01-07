@@ -46,9 +46,7 @@ const userSchema = new Schema({
   address: addressSchema,
   contactInfo: contactInfoSchema,
   //pickupLocation: pickupLocationSchema,
-  // giftaways:[String], //[id]; // New Collection: List.js?
-  // claimed:[String],
-  // received:[String],
+  giftaways:{
 })
 
 // Kevin
