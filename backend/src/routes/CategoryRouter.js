@@ -1,5 +1,5 @@
 const express = require('express');
-const Category = require('../db/category.model')
+const Category = require('../db/Category')
 
 const categoryRouter = express.Router();
 
@@ -20,4 +20,4 @@ res.status(200).json('Category already present')
 }
 })
 
-export default categoryRouter;
+module.exports = categoryRouter;

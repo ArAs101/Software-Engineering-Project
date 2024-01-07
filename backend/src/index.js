@@ -1,14 +1,15 @@
-import express from "express"
+const express = require('express')
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import connectToDb, { dbFunctions } from "./db/database.js"
-import cookieParser from "cookie-parser"
-import cors from 'cors'
-import loginRouter from './routes/LoginRouter.js'
-import registerRouter from './routes/RegisterRouter.js'
-import giftAwayRouter from './routes/GiftAwayRouter.js'
-import dashboardRouter from './routes/DashboardRouter.js'
-import categoryRouter from './routes/CategoryRouter.js'
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
+// const databaseRouter = require('./db/database')
+const loginRouter = require('./routes/LoginRouter')
+const registerRouter = require('./routes/RegisterRouter')
+const giftAwayRouter = require('./routes/GiftAwayRouter')
+const dashboardRouter = require('./routes/DashboardRouter')
+const categoryRouter = require('./routes/CategoryRouter')
 
 
 const app = express();
@@ -31,6 +32,7 @@ app.use("/category", categoryRouter)
 app.use("/dashboard", dashboardRouter)
 
 
+// DEPRECATED:
 // Database: connect to database
 connectToDb((err) => {
   if (err) {

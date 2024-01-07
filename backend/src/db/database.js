@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
-import User from "./User.js"
-import Entry from "./Entry.js"
+const mongoose = require('mongoose');
+const User = require('./User.js');
+const Entry = require('./Entry.js');
 
 const connectToDb = () => {
     mongoose.connect("mongodb+srv://aaron:GiftAway123@cluster0.hfihqtt.mongodb.net/")
@@ -10,24 +10,7 @@ const connectToDb = () => {
 
 //// USER
 ////User - create new
-// const createUser = await User.create({
-//   username: "Emi",
-//   password: "Emii123",
-//   firstname: "Emma",
-//   lastname: "Fleischer",
-//   birthday: 2002-12-10,
-//   address: {
-//     satisfiestreet: "Doppstraße",
-//     doornumber: 101,
-//     city: "Wien",
-//     postcode: 1210,
-//   },
-//   contactinfo: {
-//     mail: "emi@gmail.com",
-//     phone: 66447434559
-//   }
-// });
-// console.log(createUser)
+
 
 //User - delete by Id
 async function deleteUser(userID) {
@@ -66,7 +49,6 @@ async function searchEntriesByTitle(entryTitle) {
         const regex = new RegExp(entryTitle, "i"); // constructor: ('pattern', 'flags')
         const searchedEntries = await Entry.find({ title: regex });
         return searchEntriesByTitle;
-        console.log("Searched Entry: ", searchedEntries)
     } catch (error) {
         console.log("Database Error for searched entry:", error.message)
     }
@@ -99,6 +81,9 @@ async function searchEntriesByTitle(entryTitle) {
 // Get: seatch by category
 // Get: seatch by category & title
 
+// List functions:
+
+
 export const dbFunctions = {
     deleteEntry,
     deleteUser,
@@ -106,3 +91,24 @@ export const dbFunctions = {
     //searchEntriesByCategory,
 }
 export default connectToDb;
+
+//Tryout:
+////User - create new
+// const createUser = await User.create({
+//   username: "Emi",
+//   password: "Emii123",
+//   firstname: "Emma",
+//   lastname: "Fleischer",
+//   birthday: 2002-12-10,
+//   address: {
+//     satisfiestreet: "Doppstraße",
+//     doornumber: 101,
+//     city: "Wien",
+//     postcode: 1210,
+//   },
+//   contactinfo: {
+//     mail: "emi@gmail.com",
+//     phone: 66447434559
+//   }
+// });
+// console.log(createUser)

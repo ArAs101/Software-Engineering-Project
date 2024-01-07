@@ -1,8 +1,9 @@
-import mongoose from "mongoose"
+const mongoose = require('mongoose');
 //import bcrypt from "bcrypt"
 
 // 0. destructure schema & model from mongoose
-const {Schema, model} = mongoose;
+const Schema = mongoose.Schema;
+
 
 //1. Define Schema Object
 // Level 3 {{{}}
@@ -47,18 +48,18 @@ const userSchema = new Schema({
   address: addressSchema,
   contactInfo: contactInfoSchema,
   giftawayslist:{
-    type: [mongoose.SchemaTypes.ObjectId],
+    type: [Schema.Types.ObjectId],
     ref: "Entry",
   },
   claimedlist:{
-    type: [mongoose.SchemaTypes.ObjectId],
+    type: [Schema.Types.ObjectId],
     ref: "Entry",
   },
   receivedlist:{
-    type: [mongoose.SchemaTypes.ObjectId],
+    type: [Schema.Types.ObjectId],
     ref: "Entry",
   },
 });
 
 const User = mongoose.model('User', userSchema);
-export default User;
+module.exports = User;

@@ -1,15 +1,15 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-const {Schema, SchemaTypes, model } = mongoose;
+const Schema = mongoose.Schema;
 
 const entrySchema = new Schema({
     creator: {
-        type: mongoose.SchemaTypes.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User", //tell mongoose what model we reference
         required: true,
     },
     consumer: {
-        type: Schema.SchemaTypes.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User"
     },
     title: {
@@ -24,10 +24,10 @@ const entrySchema = new Schema({
         type: String,  // URL path to picture
         required: false,
     }],
-    category: {
-        type: [String],
-        enum: [ "Garden", "Furniture", "Household", "Sport", "Antiques/Art", "Books", "Music", "Electronics", "(Smart)Phone", "Gaming", "Clothes", "Jewelry" , "Accessories", "Childstuff", "Toys", "Craft Materials", "Pet Supplies", "Other"]
-    },
+    categories: [{
+        type: Schema.Types.ObjectId,
+        ref: "Category"
+    }],
     state: {
         type: String,
         enum: ["created", "claimed", "deactivated"],
@@ -41,5 +41,5 @@ const entrySchema = new Schema({
     },
 });
 
-const Entry = model("Entry", entrySchema);
-export default Entry;
+const Entry = mongoose.model("Entry", entrySchema);
+module.exports = Entry;
