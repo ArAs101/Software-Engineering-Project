@@ -8,6 +8,10 @@ const entrySchema = new Schema({
         ref: "User", //tell mongoose what model we reference
         required: true,
     },
+    consumer: {
+        type: Schema.SchemaTypes.ObjectId,
+        ref: "User"
+    },
     title: {
         type: String,
         required: true,
