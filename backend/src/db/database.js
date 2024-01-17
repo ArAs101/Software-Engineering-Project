@@ -5,13 +5,14 @@ const Entry = require('./Entry.js');
 
 //// USER
 ////User - create new
-//User - delete by Id
+//User - delete by ID
 async function deleteUser(userID) {
     try {
         const deleteUser = await User.findByIdAndDelete(userID);
         console.log("Deleted User: ", deleteUser)
     } catch (error) {
         console.log("Database Error for deleting user:", error.message)
+
     }
 }
 
