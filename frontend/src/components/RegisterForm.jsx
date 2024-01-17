@@ -9,6 +9,15 @@ export default function RegisterForm() {
 
     const handleRegister = async (e) => {
         e.preventDefault();
+
+        // console.log for testing
+        console.log({
+            username: username,
+            mail: mail,
+            phone: phone,
+            password: password,
+        });
+
         try {
             // Replace with your backend's register endpoint
             await axios.post('http://localhost:4000/register', {

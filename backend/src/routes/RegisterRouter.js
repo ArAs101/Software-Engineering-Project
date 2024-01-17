@@ -22,24 +22,26 @@ registerRouter.post("/", async (req, res) => {
         // Check if the user already exists
         const userExists = await User.findOne({ $or: [{ username }, { mail }] });
         if (userExists) {
+            console.log(userExists);
             return res.status(409).json({ message: 'User already exists' });
         }
-        const hashedPassword = await bcrypt.hash(password, 10);
+        //const hashedPassword = await bcrypt.hash(password, 10);
         // Create a new user
         const user = await User.create({
             username,
-            password: hashedPassword, // Save the hashed password
+            password, //: hashedPassword, // Save the hashed password
             mail,
             phone
         });
 
-        const accessToken = await jwt.sign({ username, mail, phone }
-            ,
-            process.env.ACCESS_SECRET_KEY,
-            {
-                expiresIn: "22h"
-            }
-        )
+
+        // const accessToken = await jwt.sign({ username, mail, phone }
+        //     ,
+        //     process.env.ACCESS_SECRET_KEY,
+        //     {
+        //         expiresIn: "22h"
+        //     }
+        // )
 
 
         const cookieOption = {

@@ -1,19 +1,10 @@
-//depracated: need to adapt to frontend
+//depracated file:
 const mongoose = require('mongoose');
 const User = require('./User.js');
 const Entry = require('./Entry.js');
 
-
-// const connectToDb = () => {
-//     mongoose.connect("mongodb+srv://aaron:GiftAway123@cluster0.hfihqtt.mongodb.net/")
-//     .then(() => console.log('Connected to MongoDB database'))
-//     .catch(err => console.error('Connection to database failed 2:', err));
-// };
-
 //// USER
 ////User - create new
-
-
 //User - delete by Id
 async function deleteUser(userID) {
     try {
@@ -23,15 +14,6 @@ async function deleteUser(userID) {
         console.log("Database Error for deleting user:", error.message)
     }
 }
-
-//// ENTRY
-// //Entry - create new
-// const createEntry = await Entry.create({
-//   creator: "6595ca6fc018c168a53a4cbb",
-//   title: "Kinderfahrrad",
-//   description: "Genesis, blau, 16 zoll, Untere Zollamtstr. 1030 Wien Mail: maxi1995@gmx.at"
-// })
-// console.log(createEntry)
 
 //Entry - delete by Id
 async function deleteEntry(entryId) {
@@ -56,17 +38,7 @@ async function searchEntriesByTitle(entryTitle) {
     }
 }
 
-// In Progress
-//Search - entry by category
-// async function searchEntriesByCategory(entryCategory) {
-//     try {
-//         console.log("Searched Entry: ", searchedEntries)
-//     } catch (error) {
-//         console.log("Database Error for searched entry:", error.message)
-//     }
-// }
 
-// partial matching an case insensitivity
 
 // User:
 // POST: Add new user
@@ -91,24 +63,3 @@ module.exports = {
     searchEntriesByTitle,
 };
 
-
-//Tryout:
-////User - create new
-// const createUser = await User.create({
-//   username: "Emi",
-//   password: "Emii123",
-//   firstname: "Emma",
-//   lastname: "Fleischer",
-//   birthday: 2002-12-10,
-//   address: {
-//     satisfiestreet: "Doppstraße",
-//     doornumber: 101,
-//     city: "Wien",
-//     postcode: 1210,
-//   },
-//   contactinfo: {
-//     mail: "emi@gmail.com",
-//     phone: 66447434559
-//   }
-// });
-// console.log(createUser)

@@ -41,18 +41,18 @@ const Dashboard = () => {
                             <h3>All GiftAways</h3>
                             <hr />
                             <ul style={{ listStyleType: "none" }}>
-                                {/* {unclaimedGiftaways.map((item) => {
+                                 {unclaimedGiftaways.map((item) => {
                                     return (
                                         <li key={item._id}> <CardItems id={item._id} logo={item.avatar} title={item.title} description={item.description} /></li>
                                     )
-                                })} */}
+                                })}
+{/*                                 <CardItems />
                                 <CardItems />
                                 <CardItems />
                                 <CardItems />
                                 <CardItems />
                                 <CardItems />
-                                <CardItems />
-                                <CardItems />
+                                <CardItems /> */}
                             </ul>
                         </div>
                         <div style={{ flex: 2 }}>
